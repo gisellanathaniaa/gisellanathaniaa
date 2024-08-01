@@ -1,4 +1,7 @@
 ## Hi there 👋
+### I'm a Data Science and Business Analytics Graduates and a Business Analyst employee in Jakarta.
+### I'm currently working on my portfolio for my career and publishing all of my projects here!
+### For further information, you can reach me at gisellanathania16@gmail.com or linkedin: www.linkedin.com/in/gisella-nathania :)
 
 <!--
 **gisellanathaniaa/gisellanathaniaa** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
