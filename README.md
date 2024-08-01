@@ -1,6 +1,6 @@
 #### Hi there 👋
 ###### I'm a Data Science and Business Analytics Graduates and a Business Analyst employee in Jakarta.
-###### I'm currently working on my portfolio for my career and publishing all of my projects here!
+###### I'm currently working on my portfolio for my career and will be publishing all of my projects here!
 ###### For further information, you can reach me at gisellanathania16@gmail.com or linkedin: www.linkedin.com/in/gisella-nathania :)
 
 <!--
