@@ -30,7 +30,7 @@ The project involved thorough data preprocessing and cleaning, including handlin
 
 ## Pregnancy Clothing E-Commerce Analysis and Wine Quality Clustering Analysis
 
-**R Code:**
+**R Code:** 
 
 **Goal:** To develop predictive modeling for pregnancy clothing prices and to classify wine qualities into a number of clusters.
 
@@ -40,13 +40,14 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 **Skills:** Exploratory data analysis (EDA), data cleaning, correlation matrix, algorithm selection, feature engineering, data training, data modeling, data visualization, classification matrix, principal component analysis, hierarchical clustering
 
-**R Library:** 
+**R Library:** tidyverse, ggplot2, caret, RColorBrewer, metrics, dplyr, plotly, psych, mlbench, CatEncoders, scales
 
 **Result:** K-nearest Neighbour has the best performance in predicting the clothing price for both regression and classification methods as it has the highest precision score. Wine qualities are grouped into 3 clusters in terms of acidity, protein content, and taste.
 
 
 ## Flight Delay in 1995-1996 Analysis
 **R Code:**
+
 **Python Code:**
 
 **Goal:** To develop a model that can predict plausible delay and to test the correlation and the accuracy of the variables.
@@ -56,7 +57,8 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 **Skills:** Exploratory data analysis (EDA), data cleaning, algorithm selection, feature engineering, data training, data modeling, data visualization
 
 **Python Library:** pandas, matplotlib, seaborn, numpy, sklearn
-**R Library:**
+
+**R Library:** tidyverse, ggplot2, plotly, psych, RColorBrewer
 
 **Result:** The random forest model was the most accurate for predicting delays. Hypothesis testing showed that newer planes have more delays, and people's behavior changes over time. Through EDA, it is proven that flights in the early morning, on Saturdays, and in September are less likely to be delayed.
 
