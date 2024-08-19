@@ -13,7 +13,7 @@ For further information, you can contact me at the listed contact down below :)
 # Portfolio Projects
 ## Testing and Implementing Data Model to Detect Credit Card Fraud
 
-**Python Code:** 
+**Python Code:** [Credit Card Fraud Detection.ipynb](https://github.com/gisellanathaniaa/Portfolio-Project/blob/main/Credit%20Card%20Fraud%20Detection.ipynb)
 
 **Goal:** To determine which data model is the best to detect credit card fraud in terms of precision and accuracy.
 
@@ -30,7 +30,7 @@ The project involved thorough data preprocessing and cleaning, including handlin
 
 ## Pregnancy Clothing E-Commerce Analysis and Wine Quality Clustering Analysis
 
-**R Code:** 
+**R Code:** [E-Commerce Analysis and Wine Quality.Rmd](https://github.com/gisellanathaniaa/Portfolio-Project/blob/main/E-Commerce%20Analysis%20and%20Wine%20Quality.Rmd)
 
 **Goal:** To develop predictive modeling for pregnancy clothing prices and to classify wine qualities into a number of clusters.
 
@@ -46,9 +46,9 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 
 ## Flight Delay in 1995-1996 Analysis
-**R Code:**
+**R Code:** [Flight Delay.Rmd](https://github.com/gisellanathaniaa/Portfolio-Project/blob/main/Flight%20Delay%20Analysis.Rmd)
 
-**Python Code:**
+**Python Code:** [Flight Delay.ipynb](https://github.com/gisellanathaniaa/Portfolio-Project/blob/main/Flight%20Delay.ipynb)
 
 **Goal:** To develop a model that can predict plausible delay and to test the correlation and the accuracy of the variables.
 
@@ -75,7 +75,7 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 
 ## Sales Performance and Forecast Analysis
-**Report:**
+**Report:** [Sales Performance and Forecast Analysis Report](https://drive.google.com/drive/folders/1_QeS6H9evtDnnJJ4Qml4wZ1--BxS13iB?usp=share_link)
 
 **Goal:** To analyze sales and convert it into actionable insights and provide strategic recommendations, as well as predicting the forecast sales.
 
