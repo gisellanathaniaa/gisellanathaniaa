@@ -1,19 +1,82 @@
-#### Hi there 👋
-###### I'm a Data Science and Business Analytics Graduates and a Business Analyst employee in Jakarta.
-###### I'm currently working on my portfolio for my career and will be publishing all of my projects here!
-###### For further information, you can reach me at gisellanathania16@gmail.com or linkedin: www.linkedin.com/in/gisella-nathania :)
+# Gisella Nathania Lukman - Data & Business Analyst Portfolio
 
-<!--
-**gisellanathaniaa/gisellanathaniaa** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## About
 
-Here are some ideas to get you started:
+Hi, I'm Gisella! I graduated with First Class Honours in Data Science and Business Analytics and have a strong foundation in both fields. I am passionate about using data to create meaningful insights that can drive business success. I bring a year of hands-on experience as a Business Analyst at PT Bank Digital BCA, where I refined my ability to analyze business processes and drive data-driven decisions. Additionally, I gained valuable experience during a two-month internship as a Data Scientist at PT Bank Central Asia Tbk, where I worked on developing and implementing data models to solve complex business problems in a credit card fraud project. 
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+My background has equipped me with a strong analytical skill set, and I am eager to continue growing and applying my knowledge in the field of data science. I thrive in both collaborative and independent environments and am always looking for new opportunities to expand my expertise and take on challenging projects.
+
+I'm currently working on my portfolio for my career and this repository will consist of my projects that I've done so far! I also attached my resume for detailed information.
+For further information, you can contact me at the listed contact down below :)
+
+
+# Portfolio Projects
+## Testing and Implementing Data Model to Detect Credit Card Fraud
+
+**Code:** 
+
+**Goal:** To determine which data model is the best to detect credit card fraud in terms of precision and accuracy.
+
+**Description:** This project focused on developing a robust model for detecting credit card fraud, with a primary goal of maximizing precision and accuracy. The dataset used in this project contained key transaction data, including masked customer IDs, transaction dates, transaction amounts, masked merchant IDs, and fraud status labels.
+
+The project involved thorough data preprocessing and cleaning, including handling missing values, normalizing transaction amounts, and encoding categorical variables. Feature selection techniques were applied to identify the most relevant attributes for fraud detection, followed by the evaluation of various machine learning models, such as logistic regression, decision trees, and random forests. Data visualization and simulation were also employed to gain insights and validate the model's effectiveness, ultimately identifying the best model in terms of precision and accuracy.
+
+**Skills:** Exploratory data analysis (EDA), data cleaning, features selection, encoding, data training, model selection, data modeling, data visualization, data simulation
+
+**Technology:** Pandas, matplotlib, seaborn, numpy, sklearn
+
+**Result:** Random forest model is tested to be the best among the 3 models to perform highly effectively with the most optimum precision and accuracy.
+
+## Pregnancy Clothing E-Commerce Analysis and Wine Quality Clustering Analysis
+
+**Code:**
+
+**Goal:** To develop predictive modeling for pregnancy clothing prices and to classify wine qualities into a number of clusters.
+
+**Description:** This project involved two key datasets: a pregnancy clothing e-commerce dataset and a wine quality dataset. For the pregnancy clothing dataset, the focus was on regression and classification to develop a predictive model for clothing prices and identify the model with the highest precision score—critical for online retail. The wine quality dataset was used for unsupervised learning and to cluster wine qualities based on their similarities.
+
+The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analysis, and feature engineering. Algorithms were selected and models trained, followed by data visualization and evaluation using classification matrices. For the wine dataset, Principal Component Analysis (PCA) and hierarchical clustering were employed to group the wines effectively.
+
+**Skills:** Exploratory data analysis (EDA), data cleaning, correlation matrix, algorithm selection, feature engineering, data training, data modeling, data visualization, classification matrix, principal component analysis, hierarchical clustering
+
+**Technology:** 
+
+**Result:** K-nearest Neighbour has the best performance in predicting the clothing price for both regression and classification methods as it has the highest precision score. Wine qualities are grouped into 3 clusters in terms of acidity, protein content, and taste.
+
+
+## Flight Delay in 1995-1996 Analysis
+**Code:**
+
+**Goal:**
+
+**Description:**
+
+**Skills:**
+
+**Technology:**
+
+**Result:**
+
+
+## Tesla Market Research Analysis
+**Goal:**
+
+**Description:**
+
+**Skills:**
+
+**Technology:**
+
+**Result:**
+
+
+## Global E-Commerce Analysis
+**Goal:**
+
+**Description:**
+
+**Skills:**
+
+**Technology:**
+
+**Result:**
