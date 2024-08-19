@@ -1,0 +1,665 @@
+---
+title: "Coursework ML"
+author: "Gisella"
+date: '2023-03-16'
+output: html_document
+---
+
+```{r}
+#Load library
+library(psych)
+library(CatEncoders)
+library(caTools)
+library(mlbench)
+library(caret)
+library(Metrics)
+library(randomForest)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+library(reshape2)
+library(tidyverse)
+library(scales)
+library(gbm)
+library(RColorBrewer)
+```
+
+
+```{r}
+#Load dataset
+eshop <- read.csv('/Users/gisellanathania/Documents/COURSEWORK ML/e-shop clothing 2008.csv')
+eshop
+```
+
+1. DATA PREPARATION FOR EXPLORATORY DATA ANALYSIS (EDA)
+```{r}
+#Find total rows and columns
+ncol(eshop)
+nrow(eshop)
+
+#Find all columns class
+str(eshop)
+
+#Check missing values and count
+sum(is.na(eshop))
+```
+
+```{r}
+#Make a copy of original dataset
+#Convert country column value to country names
+eshop_copy <- eshop
+eshop_copy
+eshop_copy$country[eshop_copy$country == '1'] <- 'Australia'
+eshop_copy$country[eshop_copy$country == '2'] <- 'Austria'
+eshop_copy$country[eshop_copy$country == '3'] <- 'Belgium'
+eshop_copy$country[eshop_copy$country == '4'] <- 'British Virgin Islands'
+eshop_copy$country[eshop_copy$country == '5'] <- 'Cayman Islands'
+eshop_copy$country[eshop_copy$country == '6'] <- 'Christmas Island'
+eshop_copy$country[eshop_copy$country == '7'] <- 'Croatia'
+eshop_copy$country[eshop_copy$country == '8'] <- 'Cyprus'
+eshop_copy$country[eshop_copy$country == '9'] <- 'Czech Republic'
+eshop_copy$country[eshop_copy$country == '10'] <- 'Denmark'
+eshop_copy$country[eshop_copy$country == '11'] <- 'Estonia'
+eshop_copy$country[eshop_copy$country == '12'] <- 'unidentified'
+eshop_copy$country[eshop_copy$country == '13'] <- 'Faroe Islands'
+eshop_copy$country[eshop_copy$country == '14'] <- 'Finland'
+eshop_copy$country[eshop_copy$country == '15'] <- 'France'
+eshop_copy$country[eshop_copy$country == '16'] <- 'Denmark'
+eshop_copy$country[eshop_copy$country == '17'] <- 'Greece'
+eshop_copy$country[eshop_copy$country == '18'] <- 'Hungary'
+eshop_copy$country[eshop_copy$country == '19'] <- 'Iceland'
+eshop_copy$country[eshop_copy$country == '20'] <- 'India'
+eshop_copy$country[eshop_copy$country == '21'] <- 'Ireland'
+eshop_copy$country[eshop_copy$country == '22'] <- 'Italy'
+eshop_copy$country[eshop_copy$country == '23'] <- 'Latvia'
+eshop_copy$country[eshop_copy$country == '24'] <- 'Lithuania'
+eshop_copy$country[eshop_copy$country == '25'] <- 'Luxembourg'
+eshop_copy$country[eshop_copy$country == '26'] <- 'Mexico'
+eshop_copy$country[eshop_copy$country == '27'] <- 'Netherlands'
+eshop_copy$country[eshop_copy$country == '28'] <- 'Norway'
+eshop_copy$country[eshop_copy$country == '29'] <- 'Poland'
+eshop_copy$country[eshop_copy$country == '30'] <- 'Portugal'
+eshop_copy$country[eshop_copy$country == '31'] <- 'Romania'
+eshop_copy$country[eshop_copy$country == '32'] <- 'Russia'
+eshop_copy$country[eshop_copy$country == '33'] <- 'San Marion'
+eshop_copy$country[eshop_copy$country == '34'] <- 'Slovakia'
+eshop_copy$country[eshop_copy$country == '35'] <- 'Slovenia'
+eshop_copy$country[eshop_copy$country == '36'] <- 'Spain'
+eshop_copy$country[eshop_copy$country == '37'] <- 'Sweden'
+eshop_copy$country[eshop_copy$country == '38'] <- 'Switzerland'
+eshop_copy$country[eshop_copy$country == '39'] <- 'Ukraine'
+eshop_copy$country[eshop_copy$country == '40'] <- 'United Arab Emirates'
+eshop_copy$country[eshop_copy$country == '41'] <- 'United Kingdom'
+eshop_copy$country[eshop_copy$country == '42'] <- 'USA'
+eshop_copy$country[eshop_copy$country == '43'] <- 'biz (.biz)'
+eshop_copy$country[eshop_copy$country == '44'] <- 'com (.com)'
+eshop_copy$country[eshop_copy$country == '45'] <- 'net (.net)'
+eshop_copy$country[eshop_copy$country == '46'] <- 'org (*.org)'
+eshop_copy
+```
+
+```{r}
+#Convert colours name
+eshop_copy$colour[eshop_copy$colour == '1'] <- 'beige'
+eshop_copy$colour[eshop_copy$colour == '2'] <- 'black'
+eshop_copy$colour[eshop_copy$colour == '3'] <- 'blue'
+eshop_copy$colour[eshop_copy$colour == '4'] <- 'brown'
+eshop_copy$colour[eshop_copy$colour == '5'] <- 'burgundy'
+eshop_copy$colour[eshop_copy$colour == '6'] <- 'gray'
+eshop_copy$colour[eshop_copy$colour == '7'] <- 'green'
+eshop_copy$colour[eshop_copy$colour == '8'] <- 'navy blue'
+eshop_copy$colour[eshop_copy$colour == '9'] <- 'of many colours'
+eshop_copy$colour[eshop_copy$colour == '10'] <- 'olive'
+eshop_copy$colour[eshop_copy$colour == '11'] <- 'pink'
+eshop_copy$colour[eshop_copy$colour == '12'] <- 'red'
+eshop_copy$colour[eshop_copy$colour == '13'] <- 'violet'
+eshop_copy$colour[eshop_copy$colour == '14'] <- 'white'
+eshop_copy
+```
+
+```{r}
+#Convert page 1 (main category) names
+eshop_copy$page.1..main.category.[eshop_copy$page.1..main.category. == '1'] <- 'trousers'
+eshop_copy$page.1..main.category.[eshop_copy$page.1..main.category. == '2'] <- 'skirts'
+eshop_copy$page.1..main.category.[eshop_copy$page.1..main.category. == '3'] <- 'blouses'
+eshop_copy$page.1..main.category.[eshop_copy$page.1..main.category. == '4'] <- 'sale'
+eshop_copy
+```
+
+```{r}
+#Convert locations name
+eshop_copy$location[eshop_copy$location == '1'] <- 'top left'
+eshop_copy$location[eshop_copy$location == '2'] <- 'top in the middle'
+eshop_copy$location[eshop_copy$location == '3'] <- 'top right'
+eshop_copy$location[eshop_copy$location == '4'] <- 'bottom left'
+eshop_copy$location[eshop_copy$location == '5'] <- 'bottom in the middle'
+eshop_copy$location[eshop_copy$location == '6'] <- 'bottom right'
+eshop_copy
+```
+
+```{r}
+#Convert model photography name
+eshop_copy$model.photography[eshop_copy$model.photography == '1'] <- 'en face'
+eshop_copy$model.photography[eshop_copy$model.photography == '2'] <- 'profile'
+eshop_copy
+```
+
+```{r}
+#Convert price 2 name
+eshop_copy$price.2[eshop_copy$price.2 == '1'] <- 'yes'
+eshop_copy$price.2[eshop_copy$price.2 == '2'] <- 'no'
+eshop_copy
+```
+
+```{r}
+#convert months name
+eshop_copy$month[eshop_copy$month == '4'] <- 'April'
+eshop_copy$month[eshop_copy$month == '5'] <- 'May'
+eshop_copy$month[eshop_copy$month == '6'] <- 'June'
+eshop_copy$month[eshop_copy$month == '7'] <- 'July'
+eshop_copy$month[eshop_copy$month == '8'] <- 'August'
+eshop_copy
+```
+
+```{r}
+#Checking outliers
+bp <- names(which(sapply(eshop,is.numeric)))
+eshop_boxplot <- eshop[,bp] 
+boxplot(eshop_boxplot)
+boxplot(eshop$price) #has 1 outlier
+boxplot(eshop$page) #has 2 outliers
+boxplot(eshop$country) #has many outliers
+boxplot(eshop$session.ID) #no outlier detected
+boxplot(eshop$order) #has many outliers
+boxplot(eshop$year) #just a single line
+```
+
+2. EXPLORATORY DATA ANALYSIS (EDA)
+```{r}
+##1. Which country has the most website visitors?
+web_visitors <- eshop_copy %>% 
+  group_by(country) %>% 
+  summarise(price = n()) %>% 
+  arrange(desc(price)) %>%
+  filter(price > 100)
+ggplot(web_visitors, aes(x = reorder(country, -price), y = price)) + geom_bar(stat = "identity") + geom_col() + labs(title="Countries with the Most Website Visitors by Price") + geom_text(aes(label = price, vjust = 1)) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+xlab("Country") + ylab("Price") + scale_y_continuous(labels = comma) + scale_fill_manual(values = c("#488AC7"))
+```
+
+
+```{r}
+##2. Relationship between month and buying from the website
+with_aug <- eshop_copy %>% 
+  group_by(month) %>% 
+  summarize(price = sum(price))
+without_aug <- eshop_copy %>% 
+  filter(month != 'August') %>% 
+  group_by(month) %>% 
+  summarize(price = sum(price))
+
+fig <- plot_ly(labels = with_aug$month, values = with_aug$price, type = "pie", name = "All months", domain = list(x = c(0, 0.5)), hole = 0.6) %>%
+  add_trace(labels = without_aug$month, values = without_aug$price, type = "pie", name = "All months except August", domain = list(x = c(0.5, 1)), hole = 0.6) %>%
+  layout(title = "Relationship between month and buying from the website",
+         grid = list(rows = 1, columns = 2),
+         xaxis = list(showticklabels = FALSE, zeroline = FALSE, showgrid = FALSE),
+         yaxis = list(showticklabels = FALSE, zeroline = FALSE, showgrid = FALSE),
+         annotations = list(x = 0.22, y = -0.1, showarrow = FALSE, showgrid = FALSE, zeroline = FALSE, text = "With August"),
+         annotations = list(x = 0.78, y = -0.1, showarrow = FALSE, showgrid = FALSE, zeroline = FALSE, text = "Without August"))
+fig
+##The pie chart for without August consists only 4 months because the data for August is incomplete due to only has 13 days worth of data. From both of the pie charts, it can be seen that the order of highest selling month is the same for both, top with April and followed with May, with the lowest of June despite August percentage of selling amount
+eshop_aug <- eshop_copy[eshop_copy$month == 'August',]
+unique(eshop_aug$day) #only has 13 days worth of data
+```
+
+
+```{r}
+##3. What customers buy from each page?
+cust_buy <- eshop_copy %>%
+  group_by(page, page.1..main.category.) %>%
+  summarise(counts = n())
+
+ggplot(cust_buy, aes(fill=page.1..main.category., y=counts, x=page)) + geom_bar(position="dodge", stat="identity") + scale_fill_manual(values = c("#151B54", "#0041C2", "#2554C7", "#488AC7"))
+```
+
+```{r}
+##4. What is the best selling category?
+best_selling_count <- eshop_copy %>%
+  group_by(page.1..main.category.) %>%
+  summarise(price=n())
+
+best_selling_sum <- eshop_copy %>%
+  group_by(page.1..main.category.) %>%
+  summarise(total_price=sum(price))
+
+figg <- plot_ly(labels = best_selling_count$page.1..main.category., values = best_selling_count$price, type = "pie", name = "All months", domain = list(x = c(0, 0.5)), hole = 0.6) %>%
+  add_trace(labels = best_selling_sum$page.1..main.category., values = best_selling_sum$total_price, type = "pie", name = "All months except August", domain = list(x = c(0.5, 1)), hole = 0.6) %>%
+  layout(title = "The Best Selling Category",
+         grid = list(rows = 1, columns = 2),
+         xaxis = list(showticklabels = FALSE, zeroline = FALSE, showgrid = FALSE),
+         yaxis = list(showticklabels = FALSE, zeroline = FALSE, showgrid = FALSE),
+         annotations = list(x = 0.22, y = -0.1, showarrow = FALSE, showgrid = FALSE, zeroline = FALSE, text = "Total Items per Type"),
+         annotations = list(x = 0.78, y = -0.1, showarrow = FALSE, showgrid = FALSE, zeroline = FALSE, text = "Total Sales in dollars per Type"))
+figg
+```
+
+```{r}
+##5. Are selling product affected by colours?
+product_colours <- eshop_copy %>%
+  group_by(colour) %>%
+  summarize(price = sum(price)) %>%
+  arrange(desc(price))
+
+ggplot(product_colours %>% arrange(price), aes(x=as.factor(colour), y=price, fill=as.factor(colour))) + labs(title="Colour of products with their prices") + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, vjust = 1.0, hjust=1)) + xlab("Colour") + ylab("Price") + scale_fill_manual(values = c("#151B54", "#0041C2", "#2554C7", "#488AC7", "#87AFC7", "#56A5EC", "#5CB3FF", "#A0CFEC", "#BDEDFF", "#E6E6FA", "#D5D6EA", "#B09FCA", "#967BB6", "#6F2DA8"))
+```
+
+
+2. PRE-PROCESSING
+```{r}
+#Plotting histogram for all variables except price 2 because it is not a numeric variable
+par(mfrow=c(3,5))
+hist(eshop[,1], main="Year")
+hist(eshop[,2], main="Month")
+hist(eshop[,3], main="Day")
+hist(eshop[,4], main="Order")
+hist(eshop[,5], main="Country")
+hist(eshop[,6], main="Session ID")
+hist(eshop[,7], main="Page 1")
+hist(eshop[,9], main="Colour")
+hist(eshop[,10], main="Location")
+hist(eshop[,11], main="Model Photography")
+hist(eshop[,12], main="Price")
+hist(eshop[,13], main="Price 2")
+hist(eshop[,14], main="Page")
+##year and session ID have an uniform histogram shape, indicating that the values inside occur the similar number of times
+```
+
+```{r}
+#Pearson correlation
+#Duplicating eshop dataset and excluding price, price 2, page 2 clothing model and year as those are either categorical variable or cannot be included for the correlation matrix
+eshop_corr <- subset(eshop, select = -c(price, price.2, page.2..clothing.model., year))
+str(eshop_corr)
+
+#Correlation Matrix
+corr_matrix <- round(cor(eshop_corr, method="pearson"),2)
+melted_corr <- melt(corr_matrix)
+options(repr.plot.width=10, repr.plot.height =10)
+ggplot(data=melted_corr, aes(x=Var1, y=Var2, fill=value)) + geom_tile() + geom_text(aes(Var2, Var1, label=value), color = "white", size=3) + theme(axis.text.x = element_text(angle = 45, vjust = 1.0, hjust=1))
+###Session ID can be removed from the dataset as it has relatively high correlation 
+```
+
+```{r}
+#Remove high correlation variable(s) and unnecessary variable(s), such as year and session ID
+eshop_clean <- eshop[,-c(1,6)]
+eshop_clean
+ncol(eshop_clean)
+nrow(eshop_clean)
+```
+
+```{r}
+#Label encoding variable page 2 clothing model
+labels <- LabelEncoder.fit(eshop_clean$page.2..clothing.model.)
+str(labels)
+```
+
+```{r}
+#Convert labels to numeric values
+eshop_clean$page.2..clothing.model. <- transform(labels, eshop_clean$page.2..clothing.model.)
+eshop_clean
+str(eshop_clean)
+```
+
+```{r}
+#Train test splits with ratio 70:30
+#Use 70% of dataset as training set and 30% as test set
+set.seed(1)
+nrow(eshop_clean)
+ncol(eshop_clean)
+#Random sampling of 1% worth of data of the dataset eshop_clean
+eshop_sample <- sample_n(eshop_clean, 1654) 
+eshop_sample
+nrow(eshop_sample)
+split <- sample.split(eshop_sample$price, SplitRatio = 0.7)
+training_set <- subset(eshop_sample, split==TRUE)
+test_set <- subset(eshop_sample, split==FALSE)
+dim(eshop_sample) #(1654, 12)
+dim(training_set) #(1158, 12)
+dim(test_set) #(496, 12)
+```
+
+
+```{r}
+#Feature Engineering
+set.seed(123)
+
+train.control <- trainControl(method = "cv", number = 10)
+step.model <- train(price ~., data = eshop_sample,
+                    method = "leapBackward", 
+                    tuneGrid = data.frame(nvmax = 1:5),
+                    trControl = train.control
+                    )
+step.model$results
+summary(step.model$finalModel)
+```
+
+```{r}
+#Filter sample data set, training and test data set with the only significant variables obtained from above stepwise method from feature engineering process
+train_filter = subset(training_set, select=c("price.2", "page.1..main.category.", "page.2..clothing.model.", "model.photography", "colour", "price"))
+test_filter = subset(test_set, select=c("price.2", "page.1..main.category.", "page.2..clothing.model.", "model.photography", "colour", "price"))
+eshop_filter = subset(eshop_sample, select=c("price.2", "page.1..main.category.", "page.2..clothing.model.", "model.photography", "colour", "price"))
+```
+
+```{r}
+#Scaling sample data set, training and test data set
+df_scale_train <- as.data.frame(scale(train_filter))
+df_scale_test <- as.data.frame(scale(test_filter))
+eshop_scale <- as.data.frame(scale(eshop_filter))
+```
+
+```{r}
+#Normalization min-max for unsupervised learning
+minmax <- preProcess(as.data.frame(eshop_sample), method=c("range"))
+normalization <- predict(minmax, as.data.frame(eshop_sample))
+normalization
+```
+
+3. MODELING (REGRESSION)
+```{r}
+#REGRESSION
+## 1. linear regression
+eshop_lm <- lm(price ~., data=df_scale_train)  # build linear regression model on full data
+summary(eshop_lm)
+
+predictions <- eshop_lm %>% predict(df_scale_train)
+data.frame(
+  R2 = R2(predictions, df_scale_train$price),
+  RMSE = RMSE(predictions, df_scale_train$price),
+  MAE = MAE(predictions, df_scale_train$price),
+  AIC(eshop_lm),
+  BIC(eshop_lm)
+)
+###R2=0.79, RMSE=0.46, MAE=0.35, AIC=1515.215, BIC=1550.597
+broom::glance(eshop_lm) #AIC=1515.215, BIC=1550.597
+```
+
+```{r}
+#KNN
+set.seed(1)
+knearest <- train(price ~., data=df_scale_train, method = 'knn')
+knearest
+###k=5, RMSE=0.235, Rsquared=0.95, MAE=0.093
+###k=7, RMSE=0.259, Rsquared=0.93, MAE=0.125
+###k=9, RMSE=0.287, Rsquared=0.92, MAE=0.155
+```
+
+```{r}
+#Decision Tree
+set.seed(1)
+dt <- train(price ~., data=df_scale_train, method = 'rpart2')
+dt
+### maxdepth=1, Rsquared=0.55, RMSE=0.66, MAE=0.54
+### maxdepth=2, Rsquared=0.74, RMSE=0.51, MAE=0.40
+### maxdepth=3, Rsquared=0.86, RMSE=0.38, MAE=0.29
+```
+
+```{r}
+#Random Forest
+set.seed(1)
+rf <- randomForest(price ~., df_scale_train, ntree=30, type="regression")
+rf #Rsquared = 83.26%, mean of squared residuals=0.1672116
+pred_values = predict(rf, df_scale_test)
+actual_values = df_scale_test$price
+
+df_rf <- data.frame(seed=1, metrics_rmse = rmse(pred_values,actual_values))
+df_rf #rmse=0.41 
+sprintf(paste("Random Forest MAE:", mae(actual_values, pred_values)))#mae=0.3001685
+sprintf(paste("Random Forest RMSE:", 0.4100907))
+```
+```{r}
+#Comparing 4 regression models in a dataframe
+Model_Regression <- c("Linear Regression", "K-Nearest Neighbour", "Decision Tree", "Random Forest")
+R_Squared <- c(0.79, 0.95, 0.86, 0.83)
+RMSE <- c(0.46, 0.24, 0.38, 0.41)
+MAE <- c(0.35, 0.09, 0.29, 0.30)
+
+comparison_regression <- data.frame(Model_Regression, R_Squared, RMSE, MAE)
+comparison_regression
+```
+
+4. MODELING (CLASSIFICATION)
+```{r}
+#CLASSIFICATION
+#modeling
+##1. KNN
+k_nearest <- knn(train=train_filter, 
+                 test=test_filter, 
+                 cl=train_filter$price.2, 
+                 k=3)
+
+cm <- confusionMatrix(factor(test_filter$price.2), factor(k_nearest), dnn=c("Prediction", "Actual"))
+plt <- as.data.frame(cm$table)
+plt$Prediction <- factor(plt$Prediction, levels=rev(levels(plt$Prediction)))
+ggplot(plt, aes(Actual, Prediction, fill=Freq)) +
+  geom_tile() +
+  geom_text(aes(label=Freq)) +
+  scale_fill_gradient(low="white", high="#009194") +
+  labs(x="Prediction", y="Actual") +
+  scale_x_discrete(labels=c("Class 1", "Class 2")) +
+  scale_y_discrete(labels=c("Class 2", "Class 1"))
+#Correct data for class 1 is 252 and for class 2 is 241, so the total of correct data is 493 and 3 misclassified data
+#TP=252
+#TN=241
+#FP=2
+#FN=1
+
+#Evaluate metrics knn
+cm_knn <- table(test_filter$price.2, k_nearest)
+n_knn <- sum(cm_knn)
+nc_knn <- nrow(cm_knn)
+diag_knn <- diag(cm_knn)
+rowsums_knn <- apply(cm_knn, 1, sum)
+colsums_knn <- apply(cm_knn, 2, sum)
+accuracy_knn <- sum(diag_knn)/n_knn
+precision_knn <- diag_knn/colsums_knn
+recall_knn <- diag_knn/rowsums_knn
+f1_knn <- 2* precision_knn*recall_knn/(precision_knn*recall_knn)
+metrics_knn <- data.frame(accuracy_knn, precision_knn, recall_knn, f1_knn)
+metrics_knn
+#The accuracy obtained by predicting class 1 is 99.39% and class 2 is 99.39%, precision is 99.21% and 99.59%, recall is 99.60% and 99.18% and F1 is 2 and 2
+
+#Average evaluation metrics knn
+macroPrecision_knn <- mean(precision_knn)
+macroRecall_knn <- mean(recall_knn)
+macroF1_knn <- mean(f1_knn)
+macro_metrics_knn <- data.frame(accuracy_knn, macroPrecision_knn, macroRecall_knn, macroF1_knn)
+macro_metrics_knn
+#The average accuracy obtained by predicting class 1 and 2 is 99.39%, precision is 99.40%, recall is 99.39% and F1 is 2
+```
+
+```{r}
+##2. Decision Tree
+dct <- rpart(price.2 ~., data=train_filter, method ='class')
+rpart.plot(dct)
+y_pred_dct <- predict(dct, test_filter, type='class')
+y_pred_dct
+cm_ <- confusionMatrix(factor(test_filter$price.2), factor(y_pred_dct), dnn=c("Prediction", "Actual"))
+plt_ <- as.data.frame(cm_$table)
+plt_$Prediction <- factor(plt_$Prediction, levels=rev(levels(plt_$Prediction)))
+ggplot(plt_, aes(Actual, Prediction, fill=Freq)) + 
+  geom_tile() +
+  geom_text(aes(label=Freq)) +
+  scale_fill_gradient(low="white", high="#009194") +
+  labs(x="Prediction", y="Actual") +
+  scale_x_discrete(labels=c("Class 1", "Class 2")) +
+  scale_y_discrete(labels=c("Class 2", "Class 1"))
+#Correct data for class 1 is 253 and for class 2 is 239, so the total of correct data is 492 and 4 misclassified data
+#TP=253
+#TN=239
+#FP=4
+#FN=0
+
+#Evaluate metrics decision tree
+cm_dt <- table(test_filter$price.2, y_pred_dct)
+n_dt <- sum(cm_dt)
+nc_dt <- nrow(cm_dt)
+diag_dt <- diag(cm_dt)
+rowsums_dt <- apply(cm_dt, 1, sum)
+colsums_dt <- apply(cm_dt, 2, sum)
+accuracy_dt <- sum(diag_dt)/n_dt
+precision_dt <- diag_dt/colsums_dt
+recall_dt <- diag_dt/rowsums_dt
+f1_dt <- 2* precision_dt*recall_dt/(precision_dt*recall_dt)
+metrics_dt <- data.frame(accuracy_dt, precision_dt, recall_dt, f1_dt)
+metrics_dt
+#The accuracy obtained by predicting class 1 is 99.19% and class 2 is 99.19%, precision is 98.44% and 100%, recall is 100% and 98.35%, and F1 is 2 and 2
+
+#Average evaluate metrics decision tree
+macroPrecision_dt <- mean(precision_dt)
+macroRecall_dt <- mean(recall_dt)
+macroF1_dt <- mean(f1_dt)
+macro_metrics_dt <- data.frame(accuracy_dt, macroPrecision_dt, macroRecall_dt, macroF1_dt)
+macro_metrics_dt
+#The average accuracy obtained by predicting class 1 and 2 is 99.19%, precision is 99.22%, recall is 99.18% and F1 is 2
+```
+
+```{r}
+#Comparing 2 classification models in a dataframe
+Model_Classification <- c("K-Nearest Neighbour", "Decision Tree")
+Average_Accuracy <- c(0.9940, 0.9919)
+Average_Precision <- c(0.9940, 0.9922)
+Average_Recall <- c(0.9939, 0.9918)
+Average_F1 <- c(2,2)
+
+comparison_classification <- data.frame(Model_Classification, Average_Accuracy, Average_Precision, Average_Recall, Average_F1)
+comparison_classification
+```
+
+5. UNSUPERVISED LEARNING
+```{r}
+#load dataset
+wine <- read.csv('/Users/gisellanathania/Documents/COURSEWORK ML/wine-clustering.csv')
+wine
+```
+
+```{r}
+str(wine)
+```
+```{r}
+par(mfrow=c(3,5))
+hist(wine[,1], main="Alcohol")
+hist(wine[,2], main="Malic Acid")
+hist(wine[,3], main="Ash")
+hist(wine[,4], main="Ash Alcanity")
+hist(wine[,5], main="Magnesium")
+hist(wine[,6], main="Total Phenols")
+hist(wine[,7], main="Flavanoids")
+hist(wine[,8], main="Nonflavanoids Phenols")
+hist(wine[,9], main="Proanthocyanins")
+hist(wine[,10], main="Color Intensity")
+hist(wine[,11], main="Hue")
+hist(wine[,12], main="OD280")
+hist(wine[,13], main="Proline")
+```
+
+```{r}
+#Pearson correlation
+wine_matrix <- round(cor(wine, method="pearson"),2)
+melted_wine <- melt(wine_matrix)
+options(repr.plot.width=10, repr.plot.height =10)
+ggplot(data=melted_wine, aes(x=Var1, y=Var2, fill=value)) + geom_tile() + geom_text(aes(Var2, Var1, label=value), color = "white", size=3) + theme(axis.text.x = element_text(angle = 45, vjust = 1.0, hjust=1))
+```
+
+```{r}
+#Standardization
+standardization <- preProcess(wine, method = c("center", "scale"))
+wine_std <- predict(standardization, wine)
+
+#Min-Max Scaling
+mm <- preProcess(wine_std, method = c("range"))
+wine_mm <- predict(mm, wine_std)
+
+# Print first five rows of scaled data
+print(head(wine_mm))
+```
+
+```{r}
+#Hierarchical Clustering
+#Specify the linkage methods
+methods <- c( "average", "single", "complete", "ward")
+names(methods) <- c( "average", "single", "complete", "ward")
+
+#Generate an agglomerative coeeficient function
+agglomerative <- function(x) {
+  agnes(wine_mm, method = x)$agglomerative
+}
+
+#Compute the agglomerative coefficient for each linkage method
+sapply(methods, agglomerative)
+
+#Hierarchical clustering with Ward's minimum variance
+hierarchical_cluster<- agnes(wine_mm, method = "ward")
+
+#Visualizing the hierarchical clustering with dendrogram
+pltree(hierarchical_cluster, cex = 0.6, hang = -1, main = "Dendrogram") 
+```
+
+```{r}
+#Compute each cluster by its gap statistics
+gap_cluster <- clusGap(wine_mm, FUN = hcut, nstart = 25, K.max = 10, B = 50)
+
+#Creating plot of clusters vs. gap statistic
+fviz_gap_stat(gap_cluster)
+
+#Determining distance matrix
+dist_matrix <- dist(wine_mm, method = "euclidean")
+
+#Hierarchical clustering with Ward's method
+hierarchical_cluster <- hclust(dist_matrix, method = "ward.D2" )
+
+#Divide the dendrogram into 3 clusters
+dendrogram_cluster <- cutree(hierarchical_cluster, k=3)
+
+#Compute total number of observation in each cluster
+table(dendrogram_cluster)
+
+#Determine the mean value for each cluster
+final_cluster <- cbind(wine, cluster = dendrogram_cluster)
+final_cluster_mean <- aggregate(final_cluster, by=list(cluster=final_cluster$cluster), mean)
+final_cluster_mean
+```
+```{r}
+total_num_observations = c(57,71, 50)
+final_cluster_mean['total_num_observations'] <- total_num_observations
+final_cluster_mean
+```
+
+```{r}
+#Principal Components Analysis
+pca_wine <- prcomp(wine_mm, scale = TRUE)
+summary(pca_wine)
+
+pca_wine$rotation
+##As Principal Components 1-3 have eigenvalues above 1 and proven to be able to explain 66.53% of the variation in the data, we will use the first three Principal Components
+```
+
+```{r}
+#Scree Plot for PCA
+#Calculate each principal component by its total variance
+variance_explained = pca_wine$sdev^2 / sum(pca_wine$sdev^2)
+variance_explained
+
+#Create scree plot
+variance_exp_df <- data.frame(Principal_Components= paste0("PC",1:13), variance_explained)
+variance_exp_df
+ggplot(variance_exp_df,aes(x=reorder(Principal_Components, -variance_explained), y= variance_explained))+
+  geom_col(stat="identity", fill = "blue")+
+  labs(title="Scree plot: PCA on scaled data",y='Explained Variance',x='Principal Componenets',size=14) + theme(text = element_text(size = 14,face="bold"))
+```
+
+```{r}
+#Biplot for PCA
+fviz_pca_biplot(pca_wine, repel = FALSE,geom = c("point"),
+                col.var = "black", # Variables color
+                col.ind = 'red',  # Individuals color
+                xlab='PC1',ylab='PC2'
+                ) + theme(text = element_text(size = 14,face="bold"))
+```
+
