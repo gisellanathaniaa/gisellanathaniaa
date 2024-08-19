@@ -64,7 +64,7 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 
 ## Tesla Market Research Analysis
-**Report:**
+**Report:** [Tesla Market Research Analysis Report](https://drive.google.com/drive/folders/1_QeS6H9evtDnnJJ4Qml4wZ1--BxS13iB?usp=share_link)
 
 **Goal:** to provide more insights that will be able to boost Tesla sales and achieve its maximum profit, as well as to improve Tesla in several aspects
 
