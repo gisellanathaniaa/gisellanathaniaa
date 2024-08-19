@@ -13,7 +13,7 @@ For further information, you can contact me at the listed contact down below :)
 # Portfolio Projects
 ## Testing and Implementing Data Model to Detect Credit Card Fraud
 
-**Code:** 
+**Python Code:** 
 
 **Goal:** To determine which data model is the best to detect credit card fraud in terms of precision and accuracy.
 
@@ -23,13 +23,14 @@ The project involved thorough data preprocessing and cleaning, including handlin
 
 **Skills:** Exploratory data analysis (EDA), data cleaning, features selection, encoding, data training, model selection, data modeling, data visualization, data simulation
 
-**Technology:** Pandas, matplotlib, seaborn, numpy, sklearn
+**Python Library:** Pandas, matplotlib, seaborn, numpy, sklearn
 
 **Result:** Random forest model is tested to be the best among the 3 models to perform highly effectively with the most optimum precision and accuracy.
 
+
 ## Pregnancy Clothing E-Commerce Analysis and Wine Quality Clustering Analysis
 
-**Code:**
+**R Code:**
 
 **Goal:** To develop predictive modeling for pregnancy clothing prices and to classify wine qualities into a number of clusters.
 
@@ -39,44 +40,44 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 **Skills:** Exploratory data analysis (EDA), data cleaning, correlation matrix, algorithm selection, feature engineering, data training, data modeling, data visualization, classification matrix, principal component analysis, hierarchical clustering
 
-**Technology:** 
+**R Library:** 
 
 **Result:** K-nearest Neighbour has the best performance in predicting the clothing price for both regression and classification methods as it has the highest precision score. Wine qualities are grouped into 3 clusters in terms of acidity, protein content, and taste.
 
 
 ## Flight Delay in 1995-1996 Analysis
-**Code:**
+**R Code:**
+**Python Code:**
 
-**Goal:**
+**Goal:** To develop a model that can predict plausible delay and to test the correlation and the accuracy of the variables.
 
-**Description:**
+**Description:** This project analyzed a 1995-1996 dataset on flight delays using regression methods to predict potential delays and understand customer behavior. The data underwent Exploratory Data Analysis (EDA), cleaning, feature engineering, and algorithm selection. Models were trained and evaluated, with data visualization and hypothesis testing used to validate findings, including the likelihood of plane delays and evolving customer behavior patterns.
 
-**Skills:**
+**Skills:** Exploratory data analysis (EDA), data cleaning, algorithm selection, feature engineering, data training, data modeling, data visualization
 
-**Technology:**
+**Python Library:** pandas, matplotlib, seaborn, numpy, sklearn
+**R Library:**
 
-**Result:**
+**Result:** The random forest model was the most accurate for predicting delays. Hypothesis testing showed that newer planes have more delays, and people's behavior changes over time. Through EDA, it is proven that flights in the early morning, on Saturdays, and in September are less likely to be delayed.
 
 
 ## Tesla Market Research Analysis
-**Goal:**
+**Report:**
 
-**Description:**
+**Goal:** to provide more insights that will be able to boost Tesla sales and achieve its maximum profit, as well as to improve Tesla in several aspects
 
-**Skills:**
+**Description:** This project focused on analyzing Tesla's market position and customer perceptions to support its customer acquisition and retention strategies, product expansion, and R&D budget reassessment. With Tesla's market share in electric vehicles is declining, the research aimed to provide insights to boost sales and maximize profits. The study explored drivers' attitudes toward electric cars, including price sensitivity, charging convenience, and driving range preferences. Additionally, it examined customer brand perceptions and interest in Tesla's upcoming products to identify market trends and inform strategic decisions.
 
-**Technology:**
-
-**Result:**
+**Skills:** Sampling techniques, discriminant analysis, ANOVA, paired t-test, focus group, chi-square test of homogeneity, multiple linear regression
 
 
-## Global E-Commerce Analysis
-**Goal:**
 
-**Description:**
+## Sales Performance and Forecast Analysis
+**Report:**
 
-**Skills:**
+**Goal:** To analyze sales and convert it into actionable insights and provide strategic recommendations, as well as predicting the forecast sales.
 
-**Technology:**
+**Description:** This project involved analyzing a company's performance data, including sales, profit, shipping costs, product lists, order data, and shipping data. Then, creating a comprehensive story using five Tableau dashboards, featuring bar charts, maps, pie charts, line charts, area charts, circle views, and dual combinations which will offer an in-depth analysis of overall sales, profit (with a focus on the US market), product categories, shipping costs, and future sales forecasts, helping to identify current trends and predict future performance.
 
-**Result:**
+**Skills:** Tableau
+
