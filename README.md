@@ -85,24 +85,26 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 
 # Education
-University of London: Bachelor of Science in Data Science and Business Analytics (2020-2023)
+* University of London: Bachelor of Science in Data Science and Business Analytics (2020-2023)
 
-SMA Santa Ursula Jakarta (2017-2020)
+* SMA Santa Ursula Jakarta (2017-2020)
 
 # Certificates
-[University of London Bachelor Certificate]() (2023)
+* [University of London Bachelor Certificate](https://drive.google.com/file/d/1Dww1khmCOTVJSTPcSk95ad48Co97X3MY/view?usp=drive_link) (2023)
 
-[Certificate of Intermediate SQL]() (2023) (HackerRank)
+* [Certificate of Intermediate SQL](https://drive.google.com/file/d/1EQjyzImGt19VOzIU4T-jPWybg7PaxBIW/view?usp=drive_link) (2023) (HackerRank)
 
-[Certificate of Basic SQL]() (2023) (HackerRank)
+* [Certificate of Basic SQL](https://drive.google.com/file/d/1LrJZdimWSogDORKAGK_b14i7ZEqNUtXp/view?usp=drive_link) (2023) (HackerRank)
 
-[Certificate of Introduction to R]() (Oct 2023) (DataCamp)
+* [Certificate of Introduction to R](https://drive.google.com/file/d/1XahY3lk1TlCHwcbVcCf-qM9BVE6zRb6h/view?usp=drive_link) (Oct 2023) (DataCamp)
 
-[Certificate of Introduction to Python]() (Oct 2023) (DataCamp)
+* [Certificate of Introduction to Python](https://drive.google.com/file/d/1pXvDMGBDFk6-r8x9r4wSNZ6_gl5O3m6f/view?usp=drive_link) (Oct 2023) (DataCamp)
 
-[Certificate of Intermediate SQL]() (Oct 2023) (DataCamp)
+* [Certificate of Intermediate SQL](https://drive.google.com/file/d/1wkbwU1MEctxuyz9t9cAGZVMVTaOsD2if/view?usp=drive_link) (Oct 2023) (DataCamp)
 
 # Contact Details
 E-mail: gisellanathania16@gmail.com
+
 Linkedin: [@gisellanathania](www.linkedin.com/in/gisella-nathania)
+
 Portfolio Website:
