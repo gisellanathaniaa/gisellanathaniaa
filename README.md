@@ -86,12 +86,11 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 # Education
 * University of London: Bachelor of Science in Data Science and Business Analytics (2020-2023)
+  - [University of London Bachelor Certificate](https://drive.google.com/file/d/1Dww1khmCOTVJSTPcSk95ad48Co97X3MY/view?usp=drive_link) (2023)
 
 * SMA Santa Ursula Jakarta (2017-2020)
 
 # Certificates
-* [University of London Bachelor Certificate](https://drive.google.com/file/d/1Dww1khmCOTVJSTPcSk95ad48Co97X3MY/view?usp=drive_link) (2023)
-
 * [Certificate of Intermediate SQL](https://drive.google.com/file/d/1EQjyzImGt19VOzIU4T-jPWybg7PaxBIW/view?usp=drive_link) (2023) (HackerRank)
 
 * [Certificate of Basic SQL](https://drive.google.com/file/d/1LrJZdimWSogDORKAGK_b14i7ZEqNUtXp/view?usp=drive_link) (2023) (HackerRank)
