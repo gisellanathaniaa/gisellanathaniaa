@@ -75,7 +75,7 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 
 ## Sales Performance and Forecast Analysis
-**Report:** [Sales Performance and Forecast Analysis Report]((https://github.com/gisellanathaniaa/Portfolio-Project/blob/main/Sales%20Perfomance%20and%20Forecast%20Analysis%20Report.pdf)
+**Report:** [Sales Performance and Forecast Analysis Report](https://github.com/gisellanathaniaa/Portfolio-Project/blob/main/Sales%20Perfomance%20and%20Forecast%20Analysis%20Report.pdf)
 
 **Goal:** To analyze sales and convert it into actionable insights and provide strategic recommendations, as well as predicting the forecast sales.
 
@@ -83,3 +83,26 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 **Skills:** Tableau
 
+
+# Education
+University of London: Bachelor of Science in Data Science and Business Analytics (2020-2023)
+
+SMA Santa Ursula Jakarta (2017-2020)
+
+# Certificates
+[University of London Bachelor Certificate]() (2023)
+
+[Certificate of Intermediate SQL]() (2023) (HackerRank)
+
+[Certificate of Basic SQL]() (2023) (HackerRank)
+
+[Certificate of Introduction to R]() (Oct 2023) (DataCamp)
+
+[Certificate of Introduction to Python]() (Oct 2023) (DataCamp)
+
+[Certificate of Intermediate SQL]() (Oct 2023) (DataCamp)
+
+# Contact Details
+E-mail: gisellanathania16@gmail.com
+Linkedin: [@gisellanathania](www.linkedin.com/in/gisella-nathania)
+Portfolio Website:
