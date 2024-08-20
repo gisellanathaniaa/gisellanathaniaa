@@ -6,7 +6,7 @@ Hi, I'm Gisella! I graduated with First Class Honours in Data Science and Busine
 
 My background has equipped me with a strong analytical skill set, and I am eager to continue growing and applying my knowledge in the field of data science. I thrive in both collaborative and independent environments and am always looking for new opportunities to expand my expertise and take on challenging projects.
 
-I'm currently working on my portfolio for my career and this repository will consist of my projects that I've done so far! I also attached my resume for detailed information.
+I'm currently working on my portfolio for my career and this repository will consist of my projects that I've done so far! I also attached my [resume](https://github.com/gisellanathaniaa/gisellanathaniaa/blob/main/CV%20Gisella%20Nathania%20Lukman.pdf) for detailed information.
 For further information, you can contact me at the listed contact down below :)
 
 
@@ -64,7 +64,7 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 
 ## Tesla Market Research Analysis
-**Report:** [Tesla Market Research Analysis Report](https://drive.google.com/drive/folders/1_QeS6H9evtDnnJJ4Qml4wZ1--BxS13iB?usp=share_link)
+**Report:** [Tesla Market Research Analysis Report](https://github.com/gisellanathaniaa/Portfolio-Project/blob/main/Tesla%20Market%20Research%20Report.pdf)
 
 **Goal:** to provide more insights that will be able to boost Tesla sales and achieve its maximum profit, as well as to improve Tesla in several aspects
 
@@ -75,7 +75,7 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 
 
 ## Sales Performance and Forecast Analysis
-**Report:** [Sales Performance and Forecast Analysis Report](https://drive.google.com/drive/folders/1_QeS6H9evtDnnJJ4Qml4wZ1--BxS13iB?usp=share_link)
+**Report:** [Sales Performance and Forecast Analysis Report]((https://github.com/gisellanathaniaa/Portfolio-Project/blob/main/Sales%20Perfomance%20and%20Forecast%20Analysis%20Report.pdf)
 
 **Goal:** To analyze sales and convert it into actionable insights and provide strategic recommendations, as well as predicting the forecast sales.
 
