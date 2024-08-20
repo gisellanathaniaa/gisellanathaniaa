@@ -105,5 +105,3 @@ The data underwent Exploratory Data Analysis (EDA), cleaning, correlation analys
 E-mail: gisellanathania16@gmail.com
 
 Linkedin: [@gisellanathania](www.linkedin.com/in/gisella-nathania)
-
-Portfolio Website:
